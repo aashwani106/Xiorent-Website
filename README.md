@@ -1,36 +1,160 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# XioRent Technologies - Digital Product Development Company
 
-## Getting Started
+A modern, scalable Next.js application showcasing our technology services and digital product development capabilities. Built with TypeScript, Tailwind CSS, and professional architecture patterns.
 
-First, run the development server:
+## 🚀 Features
 
+- **Modern Tech Stack**: Next.js 15, React 19, TypeScript, Tailwind CSS
+- **Professional Architecture**: Organized folder structure with separation of concerns
+- **Machine Learning & AI**: Advanced ML models and AI solutions
+- **Scalable Solutions**: Cloud-native applications that grow with your business
+- **User-Friendly Applications**: Intuitive, responsive applications across all platforms
+- **Type Safety**: Full TypeScript support with comprehensive type definitions
+- **Custom Hooks**: Reusable hooks for common functionality
+- **API Layer**: Structured API client with error handling
+- **Validation**: Form validation with Zod schemas
+- **Security**: Middleware with security headers
+
+## 📁 Project Structure
+
+```
+src/
+├── app/                    # Next.js app directory
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Home page
+├── components/            # Reusable components
+│   ├── ui/               # Basic UI components
+│   └── layout/           # Layout components
+├── hooks/                # Custom React hooks
+├── lib/                  # Utility libraries
+│   ├── config/          # Configuration files
+│   ├── constants/       # App constants
+│   └── utils/           # Utility functions
+├── types/               # TypeScript type definitions
+├── services/            # API services and business logic
+├── context/             # React context providers
+├── utils/               # Utility functions
+└── middleware.ts        # Next.js middleware
+```
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone <repository-url>
+cd xiorent
+```
+
+2. Install dependencies
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Set up environment variables
+```bash
+cp .env.example .env.local
+# Edit .env.local with your configuration
+```
+
+4. Run the development server
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🏗️ Architecture
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Component Organization
+- **UI Components**: Basic, reusable components in `components/ui/`
+- **Layout Components**: Page structure components in `components/layout/`
+- **Feature Components**: Business logic components organized by feature
 
-## Learn More
+### State Management
+- **React Context**: For global state (authentication, theme, project data)
+- **Custom Hooks**: For component-level state and side effects
+- **Local Storage**: For persistent client-side data
 
-To learn more about Next.js, take a look at the following resources:
+### API Layer
+- **Service Classes**: Organized API calls in `services/`
+- **Type Safety**: Full TypeScript support for API responses
+- **Error Handling**: Centralized error handling and user feedback
+- **ML Integration**: Ready for machine learning model integration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Styling
+- **Tailwind CSS**: Utility-first CSS framework
+- **Component Variants**: Consistent design system
+- **Responsive Design**: Mobile-first approach
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔧 Available Scripts
 
-## Deploy on Vercel
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📦 Dependencies
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Core
+- **Next.js 15**: React framework
+- **React 19**: UI library
+- **TypeScript**: Type safety
+- **Tailwind CSS**: Styling
+
+### Technology Stack
+- **Machine Learning**: Ready for ML model integration
+- **Database**: Prisma ORM with PostgreSQL support
+- **Authentication**: NextAuth.js for secure authentication
+- **Validation**: Zod for schema validation
+
+### Development
+- **ESLint**: Code linting
+- **Prettier**: Code formatting (recommended)
+
+## 🚀 Deployment
+
+The application is ready for deployment on platforms like:
+- Vercel (recommended)
+- Netlify
+- AWS
+- Any Node.js hosting platform
+
+## 🎯 Our Services
+
+- **Machine Learning & AI**: Advanced ML models and AI solutions
+- **Web Application Development**: Modern, responsive web applications
+- **Mobile App Development**: Cross-platform mobile solutions
+- **Cloud Solutions**: Scalable cloud architecture and deployment
+- **Digital Transformation**: Complete digital transformation consulting
+- **Custom Software Development**: Tailored solutions for your business needs
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## 📞 Contact
+
+For project inquiries and technology consulting, please contact XioRent Technologies.
+
+**Website**: [XioRent Technologies](https://xiorent.com)
+**Email**: info@xiorent.com
+**Phone**: +1 (555) 123-4567
