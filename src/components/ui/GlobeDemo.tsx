@@ -1,38 +1,35 @@
 "use client";
 import React from "react";
-import { motion } from "motion/react";
-import dynamic from "next/dynamic";
-import countries from "@/data/globe.json";
-
-const World = dynamic(() => import("@/components/ui/Globe"), {
-  ssr: false,
-  loading: () => <div className="w-full h-full flex items-center justify-center">Loading...</div>,
-});
+import { World } from "@/components/ui/Globe";
 
 export default function GlobeDemo() {
   const globeConfig = {
-    pointSize: 4,
-    globeColor: "#0B152D",
+    pointSize: 3,
+    globeColor: "#1a1a2e",
     showAtmosphere: true,
-    atmosphereColor: "#00F0FF",
-    atmosphereAltitude: 0.15,
-    emissive: "#0B152D",
-    emissiveIntensity: 0.2,
+    atmosphereColor: "#8B5CF6",
+    atmosphereAltitude: 0.1,
+    emissive: "#1a1a2e",
+    emissiveIntensity: 0.1,
     shininess: 0.9,
-    polygonColor: "rgba(0,240,255,0.6)",
-    ambientLight: "#00F0FF",
+    polygonColor: "rgba(139, 92, 246, 0.4)",
+    ambientLight: "#8B5CF6",
     directionalLeftLight: "#ffffff",
     directionalTopLight: "#ffffff",
-    pointLight: "#00F0FF",
-    arcTime: 1000,
-    arcLength: 0.9,
+    pointLight: "#8B5CF6",
+    arcTime: 2000,
+    arcLength: 0.8,
     rings: 1,
     maxRings: 3,
-    initialPosition: { lat: 22.3193, lng: 114.1694 },
+    initialPosition: { lat: 0, lng: 0 },
     autoRotate: true,
-    autoRotateSpeed: 0.5,
+    autoRotateSpeed: 0.3,
+    showGlobe: true,
+    showGraticules: false,
+    showLabels: false,
   };
-  const colors = ["#00F0FF", "#5200FF", "#FF2DF7"];
+
+  const colors = ["#8B5CF6", "#A855F7", "#EC4899", "#F59E0B"];
   const sampleArcs = [
     {
       order: 1,
@@ -337,61 +334,7 @@ export default function GlobeDemo() {
       startLng: -118.2437,
       endLat: 37.7749,
       endLng: -122.4194,
-      arcAlt: 0.1,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 12,
-      startLat: 35.6762,
-      startLng: 139.6503,
-      endLat: 22.3193,
-      endLng: 114.1694,
       arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 12,
-      startLat: 22.3193,
-      startLng: 114.1694,
-      endLat: 34.0522,
-      endLng: -118.2437,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 13,
-      startLat: 52.52,
-      startLng: 13.405,
-      endLat: 22.3193,
-      endLng: 114.1694,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 13,
-      startLat: 11.986597,
-      startLng: 8.571831,
-      endLat: 35.6762,
-      endLng: 139.6503,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 13,
-      startLat: -22.9068,
-      startLng: -43.1729,
-      endLat: -34.6037,
-      endLng: -58.3816,
-      arcAlt: 0.1,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 14,
-      startLat: -33.936138,
-      startLng: 18.436529,
-      endLat: 21.395643,
-      endLng: 39.883798,
-      arcAlt: 0.3,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
   ];
@@ -401,7 +344,6 @@ export default function GlobeDemo() {
       <World 
         data={sampleArcs} 
         globeConfig={globeConfig}
-        countriesData={countries}
       />
     </div>
   );
