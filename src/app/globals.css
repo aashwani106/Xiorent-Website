@@ -31,13 +31,15 @@ body {
   border-radius: 36px;
   padding: 8px 20px;
   background: 
-    linear-gradient(#0B152D, #0B152D) padding-box,
+    linear-gradient(#0d0d0d, #0d0d0d) padding-box,
     linear-gradient(267deg, #00F0FF, #5200FF, #FF2DF7, #00F0FF) border-box; /* loop colors */
 
   background-size: 200% 200%; /* make it larger so it can animate */
   background-position: 0% 50%;
   animation: borderflow 5s linear infinite;
 }
+
+
 
 @keyframes borderflow {
   0% {
