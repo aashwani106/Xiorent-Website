@@ -14,6 +14,7 @@ A modern, scalable Next.js application showcasing our technology services and di
 - **API Layer**: Structured API client with error handling
 - **Validation**: Form validation with Zod schemas
 - **Security**: Middleware with security headers
+- **3D Interactive Globe**: Interactive world map with country visualization
 
 ## 📁 Project Structure
 
@@ -34,6 +35,7 @@ src/
 ├── services/            # API services and business logic
 ├── context/             # React context providers
 ├── utils/               # Utility functions
+├── data/                # Static data files
 └── middleware.ts        # Next.js middleware
 ```
 
@@ -48,8 +50,8 @@ src/
 
 1. Clone the repository
 ```bash
-git clone <repository-url>
-cd xiorent
+git clone https://github.com/aashwani106/Xiorent-Website.git
+cd Xiorent-Website
 ```
 
 2. Install dependencies
@@ -111,6 +113,12 @@ yarn dev
 - **React 19**: UI library
 - **TypeScript**: Type safety
 - **Tailwind CSS**: Styling
+
+### 3D Visualization
+- **Three.js**: 3D graphics library
+- **@react-three/fiber**: React renderer for Three.js
+- **@react-three/drei**: Useful helpers for react-three-fiber
+- **three-globe**: Interactive 3D globe component
 
 ### Technology Stack
 - **Machine Learning**: Ready for ML model integration
