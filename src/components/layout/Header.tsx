@@ -9,7 +9,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-gradient-to-r" style={{ background: 'linear-gradient(90deg, #24154C 0%, #0B152D 100%)' }}>
+    <header className="absolute top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -49,7 +49,7 @@ export function Header() {
                   Our Services
                 </Link>
                 <Link
-                  href="/portfolio"
+                  href="/our-creation"
                   className="text-white hover:text-purple-200 px-4 py-2 text-sm font-medium transition-colors"
                 >
                   Our Creations
@@ -97,7 +97,7 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-purple-700">
+          <div className="md:hidden py-4 border-t border-white/20 bg-black/30 backdrop-blur-md">
             <div className="flex flex-col space-y-2">
               <Link
                 href="/"
@@ -121,7 +121,7 @@ export function Header() {
                 Our Services
               </Link>
               <Link
-                href="/portfolio"
+                href="/our-creation"
                 className="text-white hover:text-purple-200 px-4 py-2 text-sm font-medium transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >

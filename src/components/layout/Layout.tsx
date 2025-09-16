@@ -13,9 +13,11 @@ export function Layout({ children }: LayoutProps) {
       {/* Animated Background */}
       <AnimatedBackground />
       
+      {/* Header - positioned absolutely over content */}
+      <Header />
+      
       {/* Content with higher z-index */}
       <div className="relative z-10 flex flex-col min-h-screen">
-        <Header />
         <main className="flex-1">
           {children}
         </main>
