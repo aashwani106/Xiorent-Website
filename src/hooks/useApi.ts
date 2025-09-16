@@ -9,7 +9,7 @@ interface UseApiState<T> {
   error: ApiError | null;
 }
 
-export function useApi<T = any>() {
+export function useApi<T = unknown>() {
   const [state, setState] = useState<UseApiState<T>>({
     data: null,
     loading: false,
@@ -32,10 +32,11 @@ export function useApi<T = any>() {
         });
         return response.data;
       } else {
-        const error: ApiError = {
-          message: response.message || "An error occurred",
-          statusCode: 400,
-        };
+        const error = new ApiError(
+          response.message || "An error occurred",
+          undefined,
+          400
+        );
         setState({
           data: null,
           loading: false,
@@ -44,10 +45,11 @@ export function useApi<T = any>() {
         return null;
       }
     } catch (error) {
-      const apiError: ApiError = {
-        message: error instanceof Error ? error.message : "An unexpected error occurred",
-        statusCode: 500,
-      };
+      const apiError = new ApiError(
+        error instanceof Error ? error.message : "An unexpected error occurred",
+        undefined,
+        500
+      );
       setState({
         data: null,
         loading: false,

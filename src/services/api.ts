@@ -11,7 +11,7 @@ class ApiClient {
     endpoint: string,
     config: RequestConfig = { method: "GET" }
   ): Promise<ApiResponse<T>> {
-    const url = `${this.baseURL}${endpoint}`;
+    let url = `${this.baseURL}${endpoint}`;
     
     const requestConfig: RequestInit = {
       method: config.method,
@@ -76,7 +76,7 @@ class ApiClient {
 
   async post<T>(
     endpoint: string,
-    data?: any,
+    data?: unknown,
     config?: Omit<RequestConfig, "method" | "body">
   ): Promise<ApiResponse<T>> {
     return this.request<T>(endpoint, { ...config, method: "POST", body: data });
@@ -84,7 +84,7 @@ class ApiClient {
 
   async put<T>(
     endpoint: string,
-    data?: any,
+    data?: unknown,
     config?: Omit<RequestConfig, "method" | "body">
   ): Promise<ApiResponse<T>> {
     return this.request<T>(endpoint, { ...config, method: "PUT", body: data });
@@ -96,7 +96,7 @@ class ApiClient {
 
   async patch<T>(
     endpoint: string,
-    data?: any,
+    data?: unknown,
     config?: Omit<RequestConfig, "method" | "body">
   ): Promise<ApiResponse<T>> {
     return this.request<T>(endpoint, { ...config, method: "PATCH", body: data });

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 interface Particle {
@@ -16,7 +16,12 @@ interface Particle {
 export default function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -107,6 +112,10 @@ export default function AnimatedBackground() {
       }
     };
   }, []);
+
+  if (!isClient) {
+    return null;
+  }
 
   return (
     <>
@@ -239,27 +248,40 @@ export default function AnimatedBackground() {
           style={{ bottom: '30%', right: '30%' }}
         />
 
-        {/* Floating particles */}
-        {Array.from({ length: 20 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-white/30 rounded-full"
-            animate={{
-              y: [0, -100, 0],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: Math.random() * 3 + 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 2
-            }}
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-          />
-        ))}
+            {/* Floating particles */}
+            {Array.from({ length: 20 }).map((_, i) => {
+              // Use a seeded random function for consistent positioning
+              const seededRandom = (seed: number) => {
+                const x = Math.sin(seed) * 10000;
+                return x - Math.floor(x);
+              };
+              
+              const left = seededRandom(i * 0.1) * 100;
+              const top = seededRandom(i * 0.1 + 100) * 100;
+              const duration = seededRandom(i * 0.1 + 200) * 3 + 2;
+              const delay = seededRandom(i * 0.1 + 300) * 2;
+              
+              return (
+                <motion.div
+                  key={i}
+                  className="absolute w-1 h-1 bg-white/30 rounded-full"
+                  animate={{
+                    y: [0, -100, 0],
+                    opacity: [0, 1, 0],
+                  }}
+                  transition={{
+                    duration: duration,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: delay
+                  }}
+                  style={{
+                    left: `${left}%`,
+                    top: `${top}%`,
+                  }}
+                />
+              );
+            })}
       </div>
     </>
   );

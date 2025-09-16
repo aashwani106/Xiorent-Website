@@ -58,14 +58,13 @@ export type GlobeConfig = {
 interface WorldProps {
   globeConfig: GlobeConfig;
   data: Position[];
-  countriesData?: any[];
 }
 
-let numbersOfRings = [0];
+// const numbersOfRings = [0]; // Removed unused variable
 
-export function Globe({ globeConfig, data, countriesData }: WorldProps) {
+export function Globe({ globeConfig, data }: WorldProps) {
   const globeRef = useRef<ThreeGlobe | null>(null);
-  const groupRef = useRef();
+  const groupRef = useRef<unknown>(null);
   const [isInitialized, setIsInitialized] = useState(false);
 
   const defaultProps = {
@@ -76,6 +75,7 @@ export function Globe({ globeConfig, data, countriesData }: WorldProps) {
     polygonColor: "rgba(255,255,255,0.7)",
     globeColor: "#1d072e",
     emissive: "#000000",
+    ambientLight: "#2F165A",
     emissiveIntensity: 0.1,
     shininess: 0.9,
     arcTime: 2000,
@@ -89,7 +89,7 @@ export function Globe({ globeConfig, data, countriesData }: WorldProps) {
   useEffect(() => {
     if (!globeRef.current && groupRef.current) {
       globeRef.current = new ThreeGlobe();
-      (groupRef.current as any).add(globeRef.current);
+      (groupRef.current as unknown as { add: (obj: ThreeGlobe) => void }).add(globeRef.current);
       setIsInitialized(true);
     }
   }, []);
@@ -121,10 +121,9 @@ export function Globe({ globeConfig, data, countriesData }: WorldProps) {
     if (!globeRef.current || !isInitialized || !data) return;
 
     const arcs = data;
-    let points = [];
+    const points = [];
     for (let i = 0; i < arcs.length; i++) {
       const arc = arcs[i];
-      const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number };
       points.push({
         size: defaultProps.pointSize,
         order: arc.order,
@@ -151,11 +150,10 @@ export function Globe({ globeConfig, data, countriesData }: WorldProps) {
         ) === i,
     );
 
-    const countriesDataToUse = countriesData || countries;
     globeRef.current
-      .hexPolygonsData(countriesDataToUse.features)
-      .hexPolygonResolution(2)
-      .hexPolygonMargin(0.5)
+      .hexPolygonsData(countries.features)
+      .hexPolygonResolution(3)
+      .hexPolygonMargin(0.7)
       .showAtmosphere(defaultProps.showAtmosphere)
       .atmosphereColor(defaultProps.atmosphereColor)
       .atmosphereAltitude(defaultProps.atmosphereAltitude)
@@ -167,7 +165,7 @@ export function Globe({ globeConfig, data, countriesData }: WorldProps) {
       .arcStartLng((d) => (d as { startLng: number }).startLng * 1)
       .arcEndLat((d) => (d as { endLat: number }).endLat * 1)
       .arcEndLng((d) => (d as { endLng: number }).endLng * 1)
-      .arcColor((e: any) => (e as { color: string }).color)
+      .arcColor((e: unknown) => (e as { color: string }).color)
       .arcAltitude((e) => (e as { arcAlt: number }).arcAlt * 1)
       .arcStroke(() => [0.32, 0.28, 0.3][Math.round(Math.random() * 2)])
       .arcDashLength(defaultProps.arcLength)
@@ -243,7 +241,7 @@ export function WebGLRendererConfig() {
     gl.setPixelRatio(window.devicePixelRatio);
     gl.setSize(size.width, size.height);
     gl.setClearColor(0xffaaff, 0);
-  }, []);
+  }, [gl, size.width, size.height]);
 
   return null;
 }
@@ -284,16 +282,13 @@ export function World(props: WorldProps) {
   );
 }
 
-// Default export for dynamic import
-export default World;
-
 export function hexToRgb(hex: string) {
-  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
   hex = hex.replace(shorthandRegex, function (m, r, g, b) {
     return r + r + g + g + b + b;
   });
 
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
     ? {
         r: parseInt(result[1], 16),
