@@ -49,7 +49,7 @@ export function Header() {
                   Our Services
                 </Link>
                 <Link
-                  href="/portfolio"
+                  href="/our-creation"
                   className="text-white hover:text-purple-200 px-4 py-2 text-sm font-medium transition-colors"
                 >
                   Our Creations
@@ -121,7 +121,7 @@ export function Header() {
                 Our Services
               </Link>
               <Link
-                href="/portfolio"
+                href="/our-creation"
                 className="text-white hover:text-purple-200 px-4 py-2 text-sm font-medium transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
