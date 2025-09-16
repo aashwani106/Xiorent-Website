@@ -143,7 +143,7 @@ export function useAuth() {
         } else {
           setState(prev => ({ ...prev, isLoading: false }));
         }
-      } catch (error) {
+      } catch {
         setState(prev => ({ ...prev, isLoading: false }));
       }
     };
