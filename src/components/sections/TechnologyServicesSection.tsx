@@ -28,7 +28,8 @@ export default function TechnologyServicesSection() {
     ];
 
     return (
-        <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-b from-[#0a0b14] to-[#111827]">
+        // bg-gradient-to-b from-[#0a0b14] to-[#111827]
+        <section className="py-20 px-4 sm:px-6 lg:px-8 relative ">
             <div className="max-w-7xl mx-auto">
                 {/* Main Heading */}
                 <motion.div
@@ -65,37 +66,38 @@ export default function TechnologyServicesSection() {
                 </motion.div>
 
                 {/* Services Grid */}
-         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-   {services.map((service, index) => (
-     <motion.div
-       key={service.id}
-       className={`relative rounded-3xl overflow-hidden shadow-lg group h-72
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                    {services.map((service, index) => (
+                        <motion.div
+                            key={service.id}
+                            style={{ width: "90%" }}
+                            className={`relative rounded-3xl overflow-hidden shadow-lg group h-72
          ${index % 2 === 0 ? "translate-y-4" : "-translate-y-4"}`}
-       initial={{ opacity: 0, y: 30 }}
-       whileInView={{ opacity: 1, y: 0 }}
-       transition={{ duration: 0.6, delay: index * 0.1 }}
-       viewport={{ once: true }}
-     >
-       {/* Title at Top */}
-       <div className="absolute top-0 left-0 right-0 z-10 p-4 bg-gradient-to-b from-black/80 via-black/40 to-transparent">
-         <h3 className="text-lg font-semibold text-white text-center">
-           {service.title}
-         </h3>
-       </div>
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: index * 0.1 }}
+                            viewport={{ once: true }}
+                        >
+                            {/* Title at Top */}
+                            <div className="absolute top-0 left-0 right-0 z-10 p-4 bg-gradient-to-b from-black/80 via-black/40 to-transparent">
+                                <h3 className="text-lg font-semibold text-white text-center">
+                                    {service.title}
+                                </h3>
+                            </div>
 
-       {/* Image at Bottom */}
-       <div className="relative w-full h-full">
-         <Image
-           src={service.image}
-           alt={service.title}
-           fill
-           className="object-cover group-hover:scale-105 transition-transform duration-500"
-           priority
-         />
-       </div>
-     </motion.div>
-   ))}
- </div>
+                            {/* Image at Bottom */}
+                            <div className="relative w-full h-full">
+                                <Image
+                                    src={service.image}
+                                    alt={service.title}
+                                    fill
+                                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                    priority
+                                />
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
 
 
                 {/* View More Button */}
