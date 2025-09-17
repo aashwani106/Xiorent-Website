@@ -108,7 +108,7 @@ export default function HomeHeroSection() {
       {/* Hero Section with Globe */}
       <section className="relative min-h-screen flex">
         {/* Left Side - Text Content */}
-        <div className="w-1/2 flex flex-col justify-center px-8 lg:px-16 z-10">
+        <div className="w-1/2 flex flex-col justify-center px-8 lg:px-16 z-10 relative">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -171,12 +171,14 @@ export default function HomeHeroSection() {
           </motion.div>
         </div>
         
-        {/* Right Side - Globe */}
-        <div className="w-1/2 relative z-0">
-          <GlobeErrorBoundary key={globeKey}>
-            <GlobeDemo />
-          </GlobeErrorBoundary>
-          
+        {/* Right Side - Globe Background with Statistics Overlay */}
+        <div className="w-1/2 relative z-0 flex items-center justify-center">
+          {/* Globe Background */}
+          <div className="absolute inset-0 w-full h-full z-0">
+            <GlobeErrorBoundary key={globeKey}>
+              <GlobeDemo />
+            </GlobeErrorBoundary>
+          </div>
           {/* Manual retry button (hidden by default) */}
           {!isGlobeReady && (
             <div className="absolute top-4 right-4 z-20">
@@ -194,7 +196,7 @@ export default function HomeHeroSection() {
           
           {/* Overlay Box with Statistics */}
           <motion.div
-            className="absolute bottom-60 left-4 bg-black/20 backdrop-blur-sm p-6 border border-white/10"
+            className="bg-transparent backdrop-blur-sm p-6 border border-white/10 relative z-10 -ml-150"
             style={{ borderRadius: '24px' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -213,13 +215,16 @@ export default function HomeHeroSection() {
               <div className="w-3 bg-purple-500 rounded-t" style={{ height: '70%' }}></div>
               <div className="w-3 bg-purple-400 rounded-t" style={{ height: '50%' }}></div>
               <div className="w-3 bg-purple-600 rounded-t" style={{ height: '90%' }}></div>
+              <div className="w-3 bg-purple-600 rounded-t" style={{ height: '100%' }}></div>
+              <div className="w-3 bg-purple-400 rounded-t" style={{ height: '50%' }}></div>
+              <div className="w-3 bg-purple-600 rounded-t" style={{ height: '90%' }}></div>
             </div>
           </motion.div>
         </div>
 
         {/* Company Logos Section - Bottom of Hero */}
         <div className="absolute bottom-3 left-0 right-0 z-10">
-          <div className="w-full px-0">
+          <div className="w-full px-0 bg-transparent">
             <div className="flex items-center justify-around overflow-x-auto px-8">
                 {/* Company Logo 1 */}
                 <div className="flex-shrink-0 flex items-center">
