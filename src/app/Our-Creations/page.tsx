@@ -34,7 +34,7 @@ function page() {
       alt="heading"
       width={700}
       height={490}
-      className="mx-auto mt-5"
+      className="mx-auto mt-20"
       />
 
     <Image
